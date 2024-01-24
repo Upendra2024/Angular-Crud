@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="row">
+        <div class="col bg-light">
+            <div style="color: rgb(2, 92, 99);margin-left: 160px;font-size: large;margin-top: 70px;">
+                <h1><b> CRUD APPLICTION LOGIN </b> </h1>
+            </div>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="login3" style="margin-left: 150px;margin-top:130px;font-size:20px;color: rgb(2, 92, 99);">
+                    <label for="username">Username:</label>
+
+                    <span class="login3">
+                        <input style="height:28px;border-radius: 11px; margin-left: 12px;"
+                            placeholder="enter the username" name="name" type="text" id="username"
+                            formControlName="username" />
+                        <div *ngIf="loginForm.controls['username'].invalid && (loginForm.dirty || loginForm.touched)">
+                            <div class="login5" *ngIf="loginForm.controls['username'].errors?.['pattern']">*Username is
+                                required</div>
+                            <div class="login5" *ngIf="loginForm.controls['username'].errors?.['minlength']">*Username
+                                must be 8 characters</div>
+                            <div class="login5" *ngIf="loginForm.controls['username'].errors?.['maxlength']">*Username
+                                must be 10 characters</div>
+                        </div>
+                    </span>
+                </div>
+                <div class="login3" style="margin-left:150px;margin-top:30px;font-size:20px;color: rgb(2, 92, 99);">
+                    <label for="password">Password:</label>
+                    <span class="login3'">
+                        <input style="height:28px;border-radius:11px; margin-left:12px;"
+                            placeholder="enter the password" type="password" id="password" formControlName="password" />
+                        <div *ngIf="loginForm.controls['password'].invalid && (loginForm.dirty || loginForm.touched)">
+                            <div class="login5" *ngIf="loginForm.controls['password'].errors?.['required']">*Password is
+                                required</div>
+                            <div class="login5" *ngIf="loginForm.controls['password'].errors?.['minlength']">*Password
+                                must be 6 characters</div>
+                            <div class="login5" *ngIf="loginForm.controls['password'].errors?.['maxlength']">*Password
+                                must be 12 characters</div>
+                            <div class="login5" *ngIf="loginForm.controls['password'].errors?.['pattern']">*Must have
+                                uppercase and lowercase and number and special character</div>
+                        </div>
+
+                    </span>
+                </div>
+
+                <div class="login4">
+                    <button mat-raised-button
+                        style="margin-top:40px; margin-left:250px;height:38px;width:80px; background-color:rgb(2, 92, 99);color:azure;"
+                        type="reset" (click)='resetForm()'> Reset</button>
+                </div>
+            </form>
+        </div>
+        <div class="col">
+            <div>
+                <img src="../../../assets/Images/login page.png" width="530px" height="565px">
+            </div>
+            <div>
+                <button mat-raised-button style="margin-top:-160px;margin-left:400px;width:70px;height:40px;"
+                    type="submit" [disabled]="!loginForm.valid" routerLink="/dashboard"> Submit<i
+                        class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

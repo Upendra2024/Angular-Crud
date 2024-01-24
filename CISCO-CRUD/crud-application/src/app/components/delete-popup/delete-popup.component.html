@@ -1,0 +1,22 @@
+<div style="height:150px;width:450px;margin-left:20px;">
+    <span>
+    <h2>Are you sure you want to delete the device</h2>
+</span>
+<span>
+     <button style="margin-left: 400px;margin-top:-550px;box-shadow: none;" mat-icon-button [mat-dialog-close]="false">
+        <mat-icon style="color:rgb(2, 92, 99)">close</mat-icon>
+    </button>
+    </span>
+    
+
+    <div fxLayout="row" class="action-btn">
+        <button type="button" style="width:90px;height:35px;margin-left:30px;background-color:rgb(2, 92, 99);color:azure;margin-top:20px;"
+            bui-primary-button (click)="confirm()">
+            <span> Confirm </span>
+        </button>
+        <button type="button" style="width:90px;height:35px;margin-left:70px;background-color:rgb(2, 92, 99);color:azure;"
+            bui-primary-button (click)="cancel()">
+            Cancel
+        </button>
+    </div>
+</div>

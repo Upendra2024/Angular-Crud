@@ -1,0 +1,21 @@
+
+.action{
+  
+    button {
+        flex: 1;
+        
+    }
+}
+
+.disableColor {
+    cursor: not-allowed;
+    background-color: rgba(0,0,0,0.12);
+}
+
+.NotDisableColor {
+    color:#333;
+}
+
+.content{
+    margin-top: -20px;
+}

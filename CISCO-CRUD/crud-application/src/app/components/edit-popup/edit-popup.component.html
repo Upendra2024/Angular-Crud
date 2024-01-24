@@ -1,0 +1,105 @@
+<div style="background-color:whitesmoke;color:rgb(2, 106, 113) ;width:450px;">
+    <div style="margin-left:10px;">
+        <span>
+            <h1><b>Device Details</b></h1>
+        </span>
+    </div>
+    <div style="margin-left: 390px;margin-top: -50px;">
+        <span>
+            <button mat-icon-button [mat-dialog-close]="false">
+                <mat-icon style="color:rgb(2, 92, 99)"><b>close</b></mat-icon>
+            </button>
+        </span>
+    </div>
+
+    <form [formGroup]="detailsForm" (ngSubmit)="onFormSubmit()">
+        <div mat-dialog-content class="content">
+
+            <div class="row">
+                <mat-form-field style="color: rgb(2, 106, 113);">
+                    <label for="username">Device Name :</label>
+                    <span>
+                        <input matInput name="name" type="text" id="devicename" placeholder="Enter device name" formControlName="devicename"
+                            required="required">
+                        <div
+                            *ngIf="detailsForm.controls['devicename'].invalid && (detailsForm.dirty || detailsForm.touched)">
+                            <small style="color: red;"
+                                *ngIf="detailsForm.controls['devicename'].hasError('required')">*Devicename is
+                                required</small>
+                            <div style="color: red;font-size: small;"
+                                *ngIf="detailsForm.controls['devicename'].hasError('minlength')">*Devicename must be 8
+                                characters</div>
+                            <small style="color: red;"
+                                *ngIf="detailsForm.controls['devicename'].errors?.['maxlength']">*Devicename must be 10
+                                characters</small>
+                        </div>
+                    </span>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <div class="row" style="margin-top:-30px;">
+                    <mat-form-field style="color: rgb(2, 106, 113);">
+                        <label for="username">IP Address :</label>
+                        <span>
+                            <input matInput name="name" [readonly]="isDisable" placeholder="Enter IP Address" [ngClass]="{'disableColor': isDisable}"
+                                type="text" id="ipAddress" formControlName="ipAddress">
+                            <div *ngIf="detailsForm.controls['ipAddress'].invalid && (detailsForm.dirty || detailsForm.touched)">
+
+                                <small style="color: red;"
+                                    *ngIf="detailsForm.controls['ipAddress'].errors?.['required']">*IpAddress is
+                                    required</small>
+                                <small style="color: red;"
+                                    *ngIf="detailsForm.controls['ipAddress'].errors?.['pattern']">*Please check pattern
+                                    ex:192.168.55.44</small>
+                            </div>
+                        </span>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row" style="margin-top:-30px;">
+                <mat-form-field style="color: rgb(2, 106, 113);">
+                    <div>
+                        <label for="username">MAC Address :&nbsp;</label>
+                        <span>
+                            <input matInput name="name" placeholder="Enter MAC Address" [readonly]="isDisable" [ngClass]="{'disableColor': isDisable}"
+                                type="text" id="macAddress" [disabled]="isDisabledButton" formControlName="macAddress">
+                            <div
+                                *ngIf="detailsForm.controls['macAddress'].invalid && (detailsForm.dirty || detailsForm.touched)">
+                                <small style="color: red;"
+                                    *ngIf="detailsForm.controls['macAddress'].errors?.['required']">*MacAddress is
+                                    required</small>
+                                <small style="color: red;"
+                                    *ngIf="detailsForm.controls['macAddress'].errors?.['pattern']">*Please check pattern
+                                    Ex:A1:B2-C3:D4-E5:F6</small>
+                            </div>
+                        </span>
+                    </div>
+                </mat-form-field>
+            </div>
+            <div class="row" style="margin-top:-30px;">
+                <mat-form-field style="color: rgb(2, 106, 113);">
+
+                    <label for="username">Description :</label>
+                    <span>
+                        <input matInput name="name"  [disabled]="isDisabledButton" type="text" id="description"
+                            formControlName="description">
+                    </span>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div mat-dialog-actions class="action" style="margin-top:30px;">
+            <button mat-raised-button type="button"
+                style="width:40px;margin-left:10px;background-color:rgb(2, 92, 99);color:azure;"
+                [mat-dialog-close]="false">Cancel</button>
+
+            <button mat-raised-button type="reset"
+                style="width:44px;margin-left:35px;height: 36px; background-color:rgb(2, 106, 113);color:azure;"
+                *ngIf="!detailsForm.controls['id'].value" (click)='resetForm()'> Reset</button>
+            <button mat-raised-button type="submit"
+                style="margin-left:30px;width:40px;background-color:rgb(2, 92, 99);color:azure;">
+                {{detailsForm.controls['id'].value ? 'Update':'Save'}}</button>
+         </div>
+    </form>
+</div>
